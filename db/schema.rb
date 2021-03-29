@@ -10,12 +10,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2021_03_18_171514) do
+ActiveRecord::Schema.define(version: 2021_03_25_121652) do
 
   create_table "accounts", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
+    t.string "id_number"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.integer "subscription_type", default: 0
@@ -37,6 +38,21 @@ ActiveRecord::Schema.define(version: 2021_03_18_171514) do
     t.string "long", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "transactions", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.string "status", null: false
+    t.decimal "amount", precision: 10, default: "0", null: false
+    t.string "reception_url", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "transactions_events", id: false, charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|
+    t.bigint "transaction_id"
+    t.bigint "event_id"
+    t.index ["event_id"], name: "index_transactions_events_on_event_id"
+    t.index ["transaction_id"], name: "index_transactions_events_on_transaction_id"
   end
 
   create_table "vehicles", charset: "utf8mb4", collation: "utf8mb4_0900_ai_ci", force: :cascade do |t|

@@ -5,6 +5,12 @@ Rails.application.routes.draw do
       resources :accounts
       resources :events
       resources :tokens
+      controller :reports do
+        get 'reports/monthly_report', action: :monthly_report
+      end
+      controller :transactions do
+        post 'transactions/charge', action: :charge
+      end
     end
   end
 end

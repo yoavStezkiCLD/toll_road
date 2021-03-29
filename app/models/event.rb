@@ -3,6 +3,7 @@ class Event < ApplicationRecord
   validates :sensor_id, presence: true
   validates :account_id, presence: true
 
-  has_one :sensor
-  has_one :account
+  belongs_to :sensor
+  belongs_to :account
+  has_and_belongs_to_many :event_transactions, class_name: 'Transaction'
 end

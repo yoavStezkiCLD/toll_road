@@ -1,14 +1,10 @@
 class Account < ApplicationRecord
-  # validates :first_name, presence: true
-  # validates :last_name, presence: true
-
   has_many :vehicles, dependent: :destroy
-  has_many :events
+  has_many :events, dependent: :destroy
 
   after_create :create_vehicle, :enrich_account_data
 
   enum subscription_type: [:daily, :monthly]
-  # attr_accessor :subscription_type
 
   def initialize(plate_number)
     super()

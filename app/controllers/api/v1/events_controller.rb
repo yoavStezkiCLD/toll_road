@@ -3,6 +3,9 @@
 module Api
   module V1
     class EventsController < ApplicationController
+      skip_before_action :find_current_account, only: [:create]
+      before_action :admin_token?
+
       def create
         plate_number = params[:plate_number]
         @account = Account

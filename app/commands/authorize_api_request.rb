@@ -9,12 +9,10 @@ class AuthorizeApiRequest
 
     def http_auth_header(headers)
       if headers['Authorization'].present?
-        return headers['Authorization'].split(' ').last
+        headers['Authorization'].split(' ').last
       else
-        raise Unauthorized
+        raise CommonError::Unauthorized, 'Token Unauthorized'
       end
-
-      nil
     end
   end
 end

@@ -1,0 +1,17 @@
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type'/>
+  </head>
+  <body>
+    <h1>Monthly Report - <%= @month %>/<%= @year %></h1>
+    <p>
+      Hi <%= @account.first_name %> <%= @account.last_name %>,
+      <br/>
+      you can see your monthly report <a href="<%= @report_link %>">here</a>
+    </p>
+  </body>
+
+  <footer>
+    Thanks you, Toll Road LTD.
+  </footer>
+</html>
